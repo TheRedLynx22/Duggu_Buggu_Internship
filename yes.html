@@ -5,22 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Congratulations! 🎉</title>
     <style>
+        * { box-sizing: border-box; }
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0;
-            overflow: hidden;
+            padding: 20px;
+            overflow-x: hidden;
         }
         .container {
             text-align: center;
             background: rgba(255,255,255,0.95);
-            padding: 50px;
+            padding: clamp(25px, 8vw, 50px);
             border-radius: 25px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            width: 100%;
             max-width: 600px;
             animation: bounceIn 1s ease-out;
         }
@@ -31,19 +34,21 @@
             100% { transform: scale(1); opacity: 1; }
         }
         h1 {
-            font-size: 3em;
+            font-size: clamp(2em, 8vw, 3em);
             color: #e91e63;
-            margin-bottom: 20px;
+            margin-bottom: clamp(15px, 4vw, 20px);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            line-height: 1.2;
         }
         p {
-            font-size: 1.3em;
+            font-size: clamp(1.1em, 4vw, 1.3em);
             line-height: 1.6;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: clamp(15px, 4vw, 20px);
         }
         .hearts {
-            font-size: 2em;
+            font-size: clamp(1.5em, 6vw, 2em);
+            margin: clamp(15px, 4vw, 20px) 0;
             animation: float 2s ease-in-out infinite;
         }
         @keyframes float {
@@ -53,16 +58,19 @@
         .back-btn {
             background: #2196F3;
             color: white;
-            padding: 12px 25px;
+            padding: clamp(10px, 3vw, 12px) clamp(20px, 5vw, 25px);
             border: none;
             border-radius: 25px;
-            font-size: 1.1em;
+            font-size: clamp(1em, 3.5vw, 1.1em);
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: clamp(15px, 4vw, 20px);
             transition: background 0.3s;
+            min-width: 120px;
         }
-        .back-btn:hover {
-            background: #1976D2;
+        .back-btn:hover, .back-btn:active { background: #1976D2; }
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            .container { margin: 10px; padding: clamp(20px, 8vw, 40px); }
         }
     </style>
 </head>
@@ -72,43 +80,36 @@
         <div class="hearts">💖 💝 💕</div>
         <p>I knew you could do it! All those late nights, all that stress, every single effort... it all paid off. You've worked so incredibly hard, stayed patient through every setback, and never gave up. I'm beyond proud of you, Duggu baby. This is YOUR moment! 🌟</p>
         <p>Your strength, dedication, and beautiful heart shine through everything you do. I love watching you succeed and you deserve every bit of this happiness! 🥰</p>
-
         <p>Waiting for much more successes of your life to be a part of!!!❤️</p>
-
         <button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
     </div>
 
     <script>
-        // Confetti effect
         function makeConfetti() {
-            for(let i = 0; i < 100; i++) {
+            for(let i = 0; i < 50; i++) {
                 let confetti = document.createElement('div');
                 confetti.innerText = '🎉';
-                confetti.style.position = 'fixed';
-                confetti.style.left = Math.random() * window.innerWidth + 'px';
-                confetti.style.top = '-10px';
-                confetti.style.fontSize = '20px';
-                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
-                confetti.style.zIndex = '1000';
+                confetti.style.cssText = `
+                    position: fixed;
+                    left: ${Math.random() * 100}vw;
+                    top: -10px;
+                    font-size: clamp(12px, 2vw, 20px);
+                    animation: fall ${Math.random() * 3 + 2}s linear forwards;
+                    z-index: 1000;
+                    pointer-events: none;
+                `;
                 document.body.appendChild(confetti);
                 setTimeout(() => confetti.remove(), 5000);
             }
         }
         function createFallAnimation() {
             let style = document.createElement('style');
-            style.textContent = `
-                @keyframes fall {
-                    to {
-                        transform: translateY(100vh) rotate(360deg);
-                        opacity: 0;
-                    }
-                }
-            `;
+            style.textContent = `@keyframes fall { to { transform: translateY(100vh) rotate(360deg); opacity: 0; } }`;
             document.head.appendChild(style);
         }
         createFallAnimation();
         makeConfetti();
-        setInterval(makeConfetti, 2000);
+        setInterval(makeConfetti, 3000);
     </script>
 </body>
 </html>
