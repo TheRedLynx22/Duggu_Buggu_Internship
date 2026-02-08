@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Did you get the internship?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        .yes-btn {
+            background: #4CAF50;
+            color: white;
+        }
+        .yes-btn:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+        .no-btn {
+            background: #f44336;
+            color: white;
+        }
+        .no-btn:hover {
+            background: #da190b;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>❤️ Did you get the internship? ❤️</h1>
+        <div class="buttons">
+            <button class="yes-btn" onclick="window.location.href='yes.html'">YES! 🎉</button>
+            <button class="no-btn" onclick="window.location.href='no.html'">No 😔</button>
+        </div>
+    </div>
+</body>
+</html>
