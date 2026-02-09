@@ -65,9 +65,33 @@
     <div class="container">
         <h1>❤️ Did you get the internship? ❤️</h1>
         <div class="buttons">
-            <button class="yes-btn" onclick="window.location.href='yes.html'">YES! 🎉</button>
-            <button class="no-btn" onclick="window.location.href='no.html'">No 😔</button>
+            <button class="yes-btn" onclick="checkYesPassword()">YES! 🎉</button>
+            <button class="no-btn" onclick="checkNoPassword()">No 😔</button>
         </div>
     </div>
+
+    <script>
+        // Hardcoded passwords - CHANGE THESE!
+        const YES_PASSWORD = 'intern2026';
+        const NO_PASSWORD = 'notyet';
+
+        function checkYesPassword() {
+            const password = prompt('Enter password for YES:');
+            if (password === YES_PASSWORD) {
+                window.location.href = 'yes.html';
+            } else {
+                alert('❌ Wrong password! Try again.');
+            }
+        }
+
+        function checkNoPassword() {
+            const password = prompt('Enter password for NO:');
+            if (password === NO_PASSWORD) {
+                window.location.href = 'no.html';
+            } else {
+                alert('❌ Wrong password! Try again.');
+            }
+        }
+    </script>
 </body>
 </html>
